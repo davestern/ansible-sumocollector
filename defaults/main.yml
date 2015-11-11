@@ -8,6 +8,10 @@ sumologic_installer_rpm_local_folder: "/tmp"
 sumologic_installer_remote_file: "/tmp/sumocollector.deb"
 sumocollector_installer_download: ""
 
+# For tarball installation:
+#sumologic_installer_tarball_url: "https://collectors.sumologic.com/rest/download/tar"
+#sumologic_installer_remote_file: "/tmp/sumocollector.tar.gz"
+
 # Credentials
 sumologic_collector_accessid: ""
 sumologic_collector_accesskey: ""
@@ -16,7 +20,6 @@ sumologic_collector_accesskey: ""
 #   https://service.sumologic.com/help/Default.htm#Using_Clobber.htm
 sumologic_collector_clobber: ""
 
-sumologic_installer_file: ""
 sumologic_collector_source_template: "collector.json.j2"
 sumologic_collector_timezone: "UTC"
 sumologic_collector_force_timezone: "false"
