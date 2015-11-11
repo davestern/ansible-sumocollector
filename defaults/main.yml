@@ -10,7 +10,7 @@ sumocollector_installer_download: ""
 
 # For tarball installation:
 #sumologic_installer_tarball_url: "https://collectors.sumologic.com/rest/download/tar"
-#sumologic_installer_remote_file: "/tmp/sumocollector.tar.gz"
+#sumologic_installer_tarball_dest: "/tmp"
 
 # Credentials
 sumologic_collector_accessid: ""

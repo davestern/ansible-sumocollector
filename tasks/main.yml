@@ -1,4 +1,22 @@
 ---
+- name: 'Download SumoCollector tarball'
+  get_url: url="{{ sumologic_installer_tarball_url }}" dest="{{ sumologic_installer_tarball_dest }}/sumocollector.tgz" mode=440
+  when: sumologic_installer_tarball_url is defined
+  tags:
+      - sumologic
+
+- name: 'Unarchive SumoCollector tarball'
+  unarchive: src="{{ sumologic_installer_tarball_dest }}/sumocollector.tgz" dest="{{ sumologic_installer_tarball_dest }}" copy=no
+  when: sumologic_installer_tarball_url is defined
+  tags:
+      - sumologic
+
+# See: https://service.us2.sumologic.com/help/Default.htm#Tarball_installation_for_Linux.htm%3FTocPath%3DSending%2520Data%7CCollectors%7C%2520Installed%2520Collectors%2520%7CLinux%7C_____1
+- file: src="{{ sumologic_installer_tarball_dest }}/tanuki/linux{{ ansible_userspace_bits }}/sumocollector/wrapper" dest="{{ sumologic_installer_tarball_dest }}/wrapper" state=link
+  when: sumologic_installer_tarball_url is defined
+  tags:
+      - sumologic
+
 - name: 'Check for SumoCollector'
   command: dpkg-query -l sumocollector
   register: sumologic_collector_deb_check
