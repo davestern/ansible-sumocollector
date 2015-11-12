@@ -1,4 +1,5 @@
 ---
+# TODO: add force option
 - name: 'Download SumoCollector tarball'
   get_url: url="{{ sumologic_installer_tarball_url }}" dest="{{ sumologic_installer_tarball_dest }}/sumocollector.tgz" mode=440
   when: sumologic_installer_tarball_url is defined
@@ -12,7 +13,8 @@
       - sumologic
 
 # See: https://service.us2.sumologic.com/help/Default.htm#Tarball_installation_for_Linux.htm%3FTocPath%3DSending%2520Data%7CCollectors%7C%2520Installed%2520Collectors%2520%7CLinux%7C_____1
-- file: src="{{ sumologic_installer_tarball_dest }}/tanuki/linux{{ ansible_userspace_bits }}/sumocollector/wrapper" dest="{{ sumologic_installer_tarball_dest }}/wrapper" state=link
+- name: "Symlink SumoCollector for instance architecture (32 or 64 bit)"
+  file: src="{{ sumologic_installer_tarball_dest }}/sumocollector/tanuki/linux{{ ansible_userspace_bits }}/wrapper" dest="{{ sumologic_installer_tarball_dest }}/sumocollector/wrapper" state=link
   when: sumologic_installer_tarball_url is defined
   tags:
       - sumologic
